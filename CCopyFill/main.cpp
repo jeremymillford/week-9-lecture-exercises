@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cassert>
 
 /* In this exercise, you copy the first 10 elements of a vector to another vector, and then
    fill the remainder of the vector with 0
@@ -23,6 +24,11 @@ int main() {
   /*************************************/
   /* Testing code below. Do not modify */
   /*************************************/
-  for(auto it : vec_2)
-    std::cout << it << std::endl;  
+  if(vec_2 == std::vector<int>{-4, -9, -7, 7, 5, 5, -9, -3, 8, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}) {
+    std::cout << "Passed" << std::endl;
+    return 0;
+  } else {
+    std::cout << "Failed" << std::endl;
+    return 1;
+  }
 }

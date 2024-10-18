@@ -1,10 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
+#include <cassert>
 
 /* One common task is to read in coordinates from a file. In this exercise, you
-   will read in information for a single atom from an external file. We will
-   expand on this in the problem set
+   will read in information for a single atom from an external file.
 */
 
 // A single atom with coordinates */
@@ -25,8 +24,12 @@ int main() {
   /* into an Atom object called "atom"               */
   /***************************************************/
 
+
   /*************************************/
   /* Testing code below. Do not modify */
   /*************************************/
-  std::cout << atom.symbol << " " << atom.x << " " << atom.y << " " << atom.z << std::endl;
+  assert(atom.symbol == "B");
+  assert(atom.x == -4.7);
+  assert(atom.y == -0.65);
+  assert(atom.z == -1.11);
 }

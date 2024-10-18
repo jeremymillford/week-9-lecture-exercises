@@ -1,5 +1,5 @@
 #include <iostream>
-#include <sstream>
+#include <cassert>
 
 /* Tokenizing a string with stringstreams
 
@@ -20,8 +20,11 @@ int main() {
   /* Create a stringstream from the following string */
   std::string str = "Word 20 3.1415";
 
-  /* Extract the word as a string, the integer as an int,
-  and the floating point decimal as a double */
+  /*
+  Extract the word as a string, the integer as an int,
+  and the floating point decimal as a double
+  Remember to include the proper header!
+  */
   std::string word;
   int i;
   double d;
@@ -29,7 +32,7 @@ int main() {
   /*************************************/
   /* Testing code below. Do not modify */
   /*************************************/
-  std::cout << word << std::endl
-            << i << std::endl
-            << d << std::endl;
+  assert(word == "Word");
+  assert(i == 20);
+  assert(d == 3.1415);
 }
