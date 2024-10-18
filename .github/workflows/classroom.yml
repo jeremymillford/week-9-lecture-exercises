@@ -1,0 +1,81 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: CCopyFill
+      id: ccopyfill
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CCopyFill
+        command: cd CCopyFill && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CFilestreams
+      id: cfilestreams
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CFilestreams
+        command: cd CFilestreams && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CFind
+      id: cfind
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CFind
+        command: cd CFind && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CFunctors
+      id: cfunctors
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CFunctors
+        command: cd CFunctors && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CSort
+      id: csort
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CSort
+        command: cd CSort && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CStringstreams
+      id: cstringstreams
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CStringstreams
+        command: cd CStringstreams && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        CCOPYFILL_RESULTS: "${{steps.ccopyfill.outputs.result}}"
+        CFILESTREAMS_RESULTS: "${{steps.cfilestreams.outputs.result}}"
+        CFIND_RESULTS: "${{steps.cfind.outputs.result}}"
+        CFUNCTORS_RESULTS: "${{steps.cfunctors.outputs.result}}"
+        CSORT_RESULTS: "${{steps.csort.outputs.result}}"
+        CSTRINGSTREAMS_RESULTS: "${{steps.cstringstreams.outputs.result}}"
+      with:
+        runners: ccopyfill,cfilestreams,cfind,cfunctors,csort,cstringstreams
