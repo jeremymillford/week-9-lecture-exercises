@@ -11,6 +11,17 @@
 /**********************/
 /* Write functor here */
 /**********************/
+class DivisibleBy {
+public:
+    DivisibleBy(int divisor) : divisor_(divisor) {}
+
+    bool operator()(int number) {
+        return divisor_ != 0 && number % divisor_ == 0;
+    }
+
+private:
+    int divisor_;
+};
 
 int main() {
 
@@ -19,6 +30,7 @@ int main() {
   /* Using the functor above, find how many values are divisible by 3, and store them in the following vector */
   std::vector<int> vec_div_by_3;
 
+  std::copy_if(vec.begin(), vec.end(), std::back_inserter(vec_div_by_3), DivisibleBy(3));
 
   /*************************************/
   /* Testing code below. Do not modify */

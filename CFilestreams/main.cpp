@@ -15,10 +15,13 @@ struct Atom
   double z;
 };
 
-
-
 int main() {
+Atom atom;
 
+std::ifstream infile("test_data.xyz");
+
+infile >> atom.symbol >> atom.x >> atom.y >> atom.z;
+infile.close();
   /***************************************************/
   /* Read in the atom information from test_data.xyz */
   /* into an Atom object called "atom"               */
@@ -32,4 +35,5 @@ int main() {
   assert(atom.x == -4.7);
   assert(atom.y == -0.65);
   assert(atom.z == -1.11);
+  std::cout << "passed" << std::endl; 
 }

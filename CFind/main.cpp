@@ -10,11 +10,13 @@ int main() {
 
   // Find the first instance of the number 5 in the list above. Store it in an iterator 'it_5'
 
+  auto it_5 = std::find(lst.begin(), lst.end(), 5);
+
 
   // Find the first instance of the number 9 from the list above, but starting from the end.
   // Store it in an iterator 'it_9'
 
-
+  auto it_9 = std::find(lst.rbegin(), lst.rend(), 9);
   /*************************************/
   /* Testing code below. Do not modify */
   /*************************************/
@@ -22,4 +24,5 @@ int main() {
   assert(*it_9 == 9);
   assert(std::distance(lst.begin(), it_5) == 15);
   assert(std::distance(lst.rbegin(), it_9) == 4);
+  std::cout << "passed" << std::endl;
 }
